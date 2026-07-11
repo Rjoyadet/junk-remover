@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Haul Junk Removal – Fast, Friendly, Reliable</title>
+  <meta name="description" content="Local junk removal. We haul furniture, appliances, yard waste, and more. Same-day service available. Free estimates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo">Quick Haul <span>Junk Removal</span></a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#estimate">Estimate</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:+15551234567" class="btn btn--primary">Call (555) 123-4567</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="tagline">Same-day & next-day available</p>
+        <h1>We haul it. You relax.</h1>
+        <p>Furniture, appliances, yard waste, and more. Fast, friendly junk removal with transparent pricing. Free estimates.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn--primary btn--lg">Get a free quote</a>
+          <a href="tel:+15551234567" class="btn btn--outline btn--lg">Call now</a>
+        </div>
+        <p class="hero-phone">Or call <a href="tel:+15551234567">(555) 123-4567</a></p>
+      </div>
+    </section>
+
+    <section id="estimate" class="section tools-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get your estimate</h2>
+          <p>Use the tools below to check service area, estimate cost, or request a quick quote.</p>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>Instant price estimator</h3>
+            <p class="tool-desc">Rough range by truck size. Final price depends on what you have.</p>
+            <div class="truck-options" role="group" aria-label="Truck size">
+              <button type="button" class="truck-opt" data-size="quarter" data-low="99" data-high="199">¼ truck</button>
+              <button type="button" class="truck-opt" data-size="half" data-low="199" data-high="349">½ truck</button>
+              <button type="button" class="truck-opt selected" data-size="threequarter" data-low="349" data-high="499">¾ truck</button>
+              <button type="button" class="truck-opt" data-size="full" data-low="499" data-high="699">Full truck</button>
+            </div>
+            <div class="price-display" id="priceEstimate">
+              <span class="range">Est. </span>$349 – $499
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3>Service area checker</h3>
+            <p class="tool-desc">Enter your zip code to see if we serve your area.</p>
+            <div class="area-check">
+              <input type="text" id="zipInput" placeholder="ZIP code" maxlength="10" inputmode="numeric" pattern="[0-9\-]*" />
+              <button type="button" class="btn btn--primary" id="checkZipBtn">Check</button>
+            </div>
+            <div class="area-result" id="areaResult" aria-live="polite"></div>
+          </div>
+
+          <div class="tool-card">
+            <h3>Item removal calculator</h3>
+            <p class="tool-desc">Add items to see an estimated total. Prices are approximate.</p>
+            <div id="itemCalcList" class="item-calc-list"></div>
+            <div class="add-item-row">
+              <select id="itemSelect">
+                <option value="">Add an item…</option>
+                <option value="couch" data-price="75">Sofa / Couch — $75</option>
+                <option value="mattress" data-price="65">Mattress — $65</option>
+                <option value="dresser" data-price="55">Dresser — $55</option>
+                <option value="table" data-price="45">Table — $45</option>
+                <option value="chair" data-price="25">Chair — $25</option>
+                <option value="fridge" data-price="85">Refrigerator — $85</option>
+                <option value="washer" data-price="75">Washer / Dryer — $75</option>
+                <option value="tv" data-price="35">TV — $35</option>
+                <option value="desk" data-price="50">Desk — $50</option>
+                <option value="box" data-price="15">Box / Bin — $15</option>
+                <option value="misc" data-price="30">Misc. item — $30</option>
+              </select>
+              <button type="button" class="btn btn--outline" id="addItemBtn">Add</button>
+            </div>
+            <div class="item-calc-total" id="itemCalcTotal" style="display: none;">
+              <span>Estimated total</span>
+              <span class="amount" id="itemTotalAmount">$0</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3>Quick quote request</h3>
+            <p class="tool-desc">We’ll call or text you with a price—usually within an hour.</p>
+            <form class="quick-quote-form" id="quickQuoteForm">
+              <div class="form-group">
+                <label for="quickName">Name *</label>
+                <input type="text" id="quickName" name="quickName" required placeholder="Your name" />
+              </div>
+              <div class="form-group">
+                <label for="quickPhone">Phone *</label>
+                <input type="tel" id="quickPhone" name="quickPhone" required placeholder="(555) 123-4567" />
+              </div>
+              <div class="form-group">
+                <label for="quickItems">What to remove (optional)</label>
+                <input type="text" id="quickItems" name="quickItems" placeholder="e.g. couch, mattress, boxes" />
+              </div>
+              <button type="submit" class="btn btn--primary">Request quote</button>
+              <p class="success-msg" id="quickQuoteSuccess">Thanks! We’ll be in touch shortly.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2>What we remove</h2>
+        <p>Residential and light commercial. We load, haul, and dispose—you don’t lift a finger.</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="icon">🛋️</div>
+            <h3>Furniture</h3>
+            <p>Sofas, mattresses, tables, dressers, and other furniture. We take it all.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🔌</div>
+            <h3>Appliances</h3>
+            <p>Refrigerators, washers, dryers, microwaves, and other appliances.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🌿</div>
+            <h3>Yard & debris</h3>
+            <p>Branches, leaves, old fencing, and general yard cleanup.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">📦</div>
+            <h3>General junk</h3>
+            <p>Moving leftovers, garage cleanouts, basements, attics, and more.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section section--dark">
+      <div class="container">
+        <h2>How it works</h2>
+        <p>Three simple steps from quote to done.</p>
+        <div class="steps">
+          <div class="step">
+            <h3>1. Get a quote</h3>
+            <p>Call, text, or fill out the form. We’ll give you a clear price—no surprises.</p>
+          </div>
+          <div class="step">
+            <h3>2. Schedule</h3>
+            <p>Pick a date and time. Same-day and next-day slots often available.</p>
+          </div>
+          <div class="step">
+            <h3>3. We haul</h3>
+            <p>We show up, load everything, and leave the place clean. You’re done.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <h2>Why choose us</h2>
+            <p>We’re a small, local team that treats your home and your time with respect.</p>
+            <ul class="about-list">
+              <li><span>Transparent pricing—quote before we start</span></li>
+              <li><span>Same-day and next-day service when possible</span></li>
+              <li><span>Recycle and donate when we can</span></li>
+              <li><span>Licensed and insured</span></li>
+            </ul>
+          </div>
+          <div>
+            <p>Quick Haul Junk Removal has been helping families and businesses clear out clutter and junk for years. We show up on time, work quickly, and leave your space tidy. No hidden fees—just honest, reliable service.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--dark">
+      <div class="container">
+        <h2>Get a free quote</h2>
+        <p>Tell us what you need removed and we’ll get back to you quickly with a price.</p>
+        <form class="quote-form" action="#" method="post">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">What do you need removed? *</label>
+            <textarea id="message" name="message" required placeholder="e.g. Old couch, mattress, and a few boxes from the garage..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg">Send request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="logo">Quick Haul <span>Junk Removal</span></a>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#estimate">Estimate</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <p style="margin:0;"><a href="tel:+15551234567" style="color:inherit;">(555) 123-4567</a></p>
+        <p style="margin:0.25rem 0 0;">Serving the local area</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
